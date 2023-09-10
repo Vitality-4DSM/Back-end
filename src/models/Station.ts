@@ -12,19 +12,19 @@ Station.init(
       onDelete: "CASCADE",
     },
     identificador: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     latitude: {
-      type: DataTypes.DOUBLE, // Cambia a DataTypes.DOUBLE
+      type: DataTypes.DECIMAL(9, 6), 
       allowNull: false,
     },
     longitude: {
-      type: DataTypes.DOUBLE, // Cambia a DataTypes.DOUBLE
+      type: DataTypes.DECIMAL(8,6), 
       allowNull: false,
     },
     instalacao: {
@@ -34,7 +34,7 @@ Station.init(
   },
   {
     timestamps: false,
-    sequelize: db, // Asegúrate de que db esté configurado correctamente
+    sequelize: db, 
     modelName: "estacao",
     tableName: "estacao",
   }

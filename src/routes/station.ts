@@ -17,6 +17,5 @@ routes.delete('/delete/:id', station.delete);
 // routes.delete('/delete/:id', authorization, authAdmin , station.delete);
 
 
-// underscore atua como um espaço reservado para um argumento que desejamos ignorar
 routes.use( (_:Request,res:Response) => res.json({error:"Requisição desconhecida"}) );
 export default routes;
