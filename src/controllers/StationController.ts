@@ -25,7 +25,7 @@ export class StationController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const station = await Station.findOne({
@@ -39,7 +39,7 @@ export class StationController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await Station.update(req.body, {
@@ -62,7 +62,7 @@ export class StationController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const userToBeDeleted = await Station.findOne({

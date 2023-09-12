@@ -25,7 +25,7 @@ export class AlertController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const alert = await Alert.findOne({
@@ -39,7 +39,7 @@ export class AlertController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await Alert.update(req.body, {
@@ -62,7 +62,7 @@ export class AlertController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const AlertToBeDeleted = await Alert.findOne({

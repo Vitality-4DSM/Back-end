@@ -3,18 +3,18 @@ import TypeParameter from '../controllers/TypeParameterController';
 import { authorization , authAdmin} from "../autenticacao";
 
 const routes = Router();
-routes.post('/create', TypeParameter.create);
-routes.get('/get/:id', TypeParameter.getById);
-routes.get('/getall', TypeParameter.getAll);
-routes.put('/update/:id', TypeParameter.update);
-routes.delete('/delete/:id', TypeParameter.delete);
+routes.post('/', TypeParameter.create);
+routes.get('/get', TypeParameter.getById);
+routes.get('/', TypeParameter.getAll);
+routes.put('/', TypeParameter.update);
+routes.delete('/', TypeParameter.delete);
 
 // SOMENTE O ADMIN ACESSA CREATE E O DELETE
-// routes.post('/create', authorization, authAdmin ,TypeParameter.create);
-// routes.get('/get/:id', authorization, TypeParameter.getById);
-// routes.get('/getall', authorization , TypeParameter.getAll);
-// routes.put('/update/:id', authorization, TypeParameter.update);
-// routes.delete('/delete/:id', authorization, authAdmin , TypeParameter.delete);
+// routes.post('/', authorization, authAdmin ,TypeParameter.create);
+// routes.get('/get', authorization, TypeParameter.getById);
+// routes.get('/', authorization , TypeParameter.getAll);
+// routes.put('/', authorization, TypeParameter.update);
+// routes.delete('/', authorization, authAdmin , TypeParameter.delete);
 
 
 routes.use( (_:Request,res:Response) => res.json({error:"Requisição desconhecida"}) );

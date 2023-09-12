@@ -25,7 +25,7 @@ export class HistoricAlertController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const historicalert = await HistoricAlert.findOne({
@@ -39,7 +39,7 @@ export class HistoricAlertController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await HistoricAlert.update(req.body, {
@@ -62,7 +62,7 @@ export class HistoricAlertController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const HistoricAlertToBeDeleted = await HistoricAlert.findOne({

@@ -25,7 +25,7 @@ export class ParameterController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const parameter = await Parameter.findOne({
@@ -39,7 +39,7 @@ export class ParameterController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await Parameter.update(req.body, {
@@ -62,7 +62,7 @@ export class ParameterController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const ParameterToBeDeleted = await Parameter.findOne({

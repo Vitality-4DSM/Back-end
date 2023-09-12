@@ -25,7 +25,7 @@ export class ValorController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const valor = await Valor.findOne({
@@ -39,7 +39,7 @@ export class ValorController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await Valor.update(req.body, {
@@ -62,7 +62,7 @@ export class ValorController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const ValorToBeDeleted = await Valor.findOne({

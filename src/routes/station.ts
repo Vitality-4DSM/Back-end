@@ -3,18 +3,18 @@ import station from '../controllers/StationController';
 import { authorization , authAdmin} from "../autenticacao";
 
 const routes = Router();
-routes.post('/create', station.create);
-routes.get('/get/:id', station.getById);
-routes.get('/getall', station.getAll);
-routes.put('/update/:id', station.update);
-routes.delete('/delete/:id', station.delete);
+routes.post('/', station.create);
+routes.get('/get', station.getById);
+routes.get('/', station.getAll);
+routes.put('/', station.update);
+routes.delete('/', station.delete);
 
 // SOMENTE O ADMIN ACESSA CREATE E O DELETE
-// routes.post('/create', authorization, authAdmin ,station.create);
-// routes.get('/get/:id', authorization, station.getById);
-// routes.get('/getall', authorization , station.getAll);
-// routes.put('/update/:id', authorization, station.update);
-// routes.delete('/delete/:id', authorization, authAdmin , station.delete);
+// routes.post('/', authorization, authAdmin ,station.create);
+// routes.get('/get', authorization, station.getById);
+// routes.get('/', authorization , station.getAll);
+// routes.put('/', authorization, station.update);
+// routes.delete('/', authorization, authAdmin , station.delete);
 
 
 routes.use( (_:Request,res:Response) => res.json({error:"Requisição desconhecida"}) );

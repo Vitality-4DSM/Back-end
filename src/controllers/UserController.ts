@@ -25,7 +25,7 @@ export class UserController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const user = await User.findOne({
@@ -39,7 +39,7 @@ export class UserController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await User.update(req.body, {
@@ -62,7 +62,7 @@ export class UserController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const userToBeDeleted = await User.findOne({

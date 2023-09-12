@@ -25,7 +25,7 @@ export class TypeParameterController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const typeParameter = await TypeParameter.findOne({
@@ -39,7 +39,7 @@ export class TypeParameterController {
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const [updated] = await TypeParameter.update(req.body, {
@@ -62,7 +62,7 @@ export class TypeParameterController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
       const TypeParameterToBeDeleted = await TypeParameter.findOne({
