@@ -1,5 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/Database.config";
+import { Alert } from "./Alert";
+import { Valor } from "./Valor";
 
 export class HistoricAlert extends Model { }
 HistoricAlert.init({
@@ -10,11 +12,6 @@ HistoricAlert.init({
         allowNull: false,
         onDelete: "CASCADE",
     },
-
-    data_ocorrencia: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
 },
     {
         timestamps: false,
@@ -23,3 +20,7 @@ HistoricAlert.init({
         tableName: "historico_alerta",
     }
 );
+
+
+HistoricAlert.belongsTo(Alert, { foreignKey: 'id_alerta' })
+HistoricAlert.belongsTo(Valor, { foreignKey: 'id_valor' }) 

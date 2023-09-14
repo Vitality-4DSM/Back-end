@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config"; // Asegúrate de que esto esté correctamente configurado
+import db from "../config/Database.config"; 
 
 export class TypeParameter extends Model { }
 TypeParameter.init(

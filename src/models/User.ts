@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config"; // Asegúrate de que esto esté correctamente configurado
+import db from "../config/Database.config"; 
 
 export class User extends Model { }
 User.init(
@@ -15,6 +15,14 @@ User.init(
             type: DataTypes.STRING(30),
             allowNull: false,
         },
+        email: {
+            type: DataTypes.STRING(30),
+            allowNull: false,
+        },
+        senha: {
+            type: DataTypes.STRING(30),
+            allowNull: false,
+        },
         criado: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -22,7 +30,7 @@ User.init(
     },
     {
         timestamps: false,
-        sequelize: db, 
+        sequelize: db,
         modelName: "usuario",
         tableName: "usuario",
     }

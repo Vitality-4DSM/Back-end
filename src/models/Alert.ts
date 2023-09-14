@@ -5,26 +5,29 @@ import { Parameter } from "./Parameter";
 export class Alert extends Model { }
 Alert.init(
     {
-    id_alerta: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false,
-        onDelete: "CASCADE",
+        id_alerta: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+            allowNull: false,
+            onDelete: "CASCADE",
+        },
+        valor: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        sinal: {
+            type: DataTypes.STRING(3),
+            allowNull: false,
+        },
     },
-    parametro_verificar: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    qual_estacao: {
-        type: DataTypes.STRING(30),
-        allowNull: false,
-    },
-},
     {
         timestamps: false,
-        sequelize: db, 
+        sequelize: db,
         modelName: "alerta",
         tableName: "alerta",
     }
 );
+
+
+Alert.belongsTo(Parameter,{ foreignKey: 'id_parametro'})

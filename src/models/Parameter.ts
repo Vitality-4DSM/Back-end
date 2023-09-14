@@ -1,9 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/Database.config";
 import { TypeParameter } from "./TypeParameter";
-import { Valor } from "./Valor";
 import { Station } from "./Station";
-import { Alert } from "./Alert";
 
 export class Parameter extends Model { }
 Parameter.init({
@@ -26,4 +24,3 @@ Parameter.init({
 
 Parameter.belongsTo(Station, { foreignKey: 'id_estacao' });
 Parameter.belongsTo(TypeParameter, { foreignKey: 'id_tipo_parametro' });
-Parameter.belongsTo(Alert , { foreignKey: 'id_alerta' })
