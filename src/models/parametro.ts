@@ -1,10 +1,10 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config";
-import { TypeParameter } from "./TypeParameter";
-import { Station } from "./Station";
+import db from "../config/bd_config";
+import { TipoParametro } from "./tipo_parametro";
+import { Estacao } from "./estacao";
 
-export class Parameter extends Model { }
-Parameter.init({
+export class Parametro extends Model { }
+Parametro.init({
     id_parametro: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -22,5 +22,5 @@ Parameter.init({
 );
 
 
-Parameter.belongsTo(Station, { foreignKey: 'id_estacao' });
-Parameter.belongsTo(TypeParameter, { foreignKey: 'id_tipo_parametro' });
+Parametro.belongsTo(Estacao, { foreignKey: 'id_estacao' });
+Parametro.belongsTo(TipoParametro, { foreignKey: 'id_tipo_parametro' });

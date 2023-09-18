@@ -1,23 +1,23 @@
-import { HistoricAlert } from "../models/HistoricAlert";
+import { HistoricoAlerta } from "../models/historico_alerta";
 import { Request, Response } from "express";
 
-export class HistoricAlertController {
+export class HistoricoAlertaController {
 
   // CREATE
   async create(req: Request, res: Response) {
     try {
-      const historicalert = await HistoricAlert.create({ ...req.body });
+      const historicalert = await HistoricoAlerta.create({ ...req.body });
 
       return res.json(historicalert);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Historic Alert" });
+      return res.status(500).json({ error: "Cannot create Historic Alerta" });
     }
   }
 
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const historicalert = await HistoricAlert.findAll();
+      const historicalert = await HistoricoAlerta.findAll();
       return res.json(historicalert);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Historic Alerts" });
@@ -28,12 +28,12 @@ export class HistoricAlertController {
     const { id } = req.body;
 
     try {
-      const historicalert = await HistoricAlert.findOne({
+      const historicalert = await HistoricoAlerta.findOne({
         where: { id_historico: id },
       });
       return res.json(historicalert);
     } catch (e) {
-      return res.status(500).json({ error: "Historic Alert not found" });
+      return res.status(500).json({ error: "Historic Alerta not found" });
     }
   }
 
@@ -42,20 +42,20 @@ export class HistoricAlertController {
     const { id } = req.body;
 
     try {
-      const [updated] = await HistoricAlert.update(req.body, {
+      const [updated] = await HistoricoAlerta.update(req.body, {
         where: { id_historico: id },
       });
 
       if (updated) {
-        const updatedHistoricAlert = await HistoricAlert.findOne({
+        const updatedHistoricAlert = await HistoricoAlerta.findOne({
           where: { id_historico: id },
         });
         return res.json(updatedHistoricAlert);
       }
-      
-      throw new Error("Historic Alert not found");
+
+      throw new Error("Historic Alerta not found");
     } catch (e) {
-      return res.status(500).json({ error: e});
+      return res.status(500).json({ error: e });
     }
   }
 
@@ -65,19 +65,19 @@ export class HistoricAlertController {
     const { id } = req.body;
 
     try {
-      const HistoricAlertToBeDeleted = await HistoricAlert.findOne({
+      const HistoricAlertToBeDeleted = await HistoricoAlerta.findOne({
         where: { id_historico: id },
       });
 
       if (!HistoricAlertToBeDeleted) {
-        return res.status(404).json({ error: "Historic Alert not found" });
+        return res.status(404).json({ error: "Historic Alerta not found" });
       }
       await HistoricAlertToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Historic Alert deleted" });
+      return res.sendStatus(204).json({ message: "Historic Alerta deleted" });
     } catch (e) {
-      return res.status(500).json({ error: "Cannot delete Historic Alert" });
+      return res.status(500).json({ error: "Cannot delete Historic Alerta" });
     }
   }
 }
 
-export default new HistoricAlertController();
+export default new HistoricoAlertaController();

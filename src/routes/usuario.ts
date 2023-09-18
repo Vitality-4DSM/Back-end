@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import user from '../controllers/UserController';
-import { authorization , authAdmin} from "../autenticacao";
+import user from '../controllers/usuario';
+import { authorization, authAdmin } from "../autenticacao";
 
 const routes = Router();
 routes.post('/', user.create);
@@ -17,5 +17,5 @@ routes.delete('/', user.delete);
 // routes.delete('/', authorization, authAdmin , user.delete);
 
 
-routes.use( (_:Request,res:Response) => res.json({error:"Requisição desconhecida"}) );
+routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));
 export default routes;

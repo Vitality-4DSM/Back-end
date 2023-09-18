@@ -1,23 +1,23 @@
-import { Alert } from "../models/Alert";
+import { Alerta } from "../models/alerta";
 import { Request, Response } from "express";
 
-export class AlertController {
+export class AlertaController {
 
   // CREATE
   async create(req: Request, res: Response) {
     try {
-      const alert = await Alert.create({ ...req.body });
+      const alert = await Alerta.create({ ...req.body });
 
       return res.json(alert);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Alert" });
+      return res.status(500).json({ error: "Cannot create Alerta" });
     }
   }
 
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const alert = await Alert.findAll();
+      const alert = await Alerta.findAll();
       return res.json(alert);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Alerts" });
@@ -28,12 +28,12 @@ export class AlertController {
     const { id } = req.body;
 
     try {
-      const alert = await Alert.findOne({
+      const alert = await Alerta.findOne({
         where: { id_alerta: id },
       });
       return res.json(alert);
     } catch (e) {
-      return res.status(500).json({ error: "Alert not found" });
+      return res.status(500).json({ error: "Alerta not found" });
     }
   }
 
@@ -42,20 +42,20 @@ export class AlertController {
     const { id } = req.body;
 
     try {
-      const [updated] = await Alert.update(req.body, {
+      const [updated] = await Alerta.update(req.body, {
         where: { id_alerta: id },
       });
 
       if (updated) {
-        const updatedAlert = await Alert.findOne({
+        const updatedAlert = await Alerta.findOne({
           where: { id_alerta: id },
         });
         return res.json(updatedAlert);
       }
-      
-      throw new Error("Alert not found");
+
+      throw new Error("Alerta not found");
     } catch (e) {
-      return res.status(500).json({ error: e});
+      return res.status(500).json({ error: e });
     }
   }
 
@@ -65,19 +65,19 @@ export class AlertController {
     const { id } = req.body;
 
     try {
-      const AlertToBeDeleted = await Alert.findOne({
+      const AlertToBeDeleted = await Alerta.findOne({
         where: { id_alerta: id },
       });
 
       if (!AlertToBeDeleted) {
-        return res.status(404).json({ error: "Alert not found" });
+        return res.status(404).json({ error: "Alerta not found" });
       }
       await AlertToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Alert deleted" });
+      return res.sendStatus(204).json({ message: "Alerta deleted" });
     } catch (e) {
-      return res.status(500).json({ error: "Cannot delete Alert" });
+      return res.status(500).json({ error: "Cannot delete Alerta" });
     }
   }
 }
 
-export default new AlertController();
+export default new AlertaController();

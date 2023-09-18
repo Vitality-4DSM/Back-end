@@ -1,23 +1,23 @@
-import { Parameter } from "../models/Parameter";
+import { Parametro } from "../models/parametro";
 import { Request, Response } from "express";
 
-export class ParameterController {
+export class ParametroController {
 
   // CREATE
   async create(req: Request, res: Response) {
     try {
-      const parameter = await Parameter.create({ ...req.body });
+      const parameter = await Parametro.create({ ...req.body });
 
       return res.json(parameter);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Parameter" });
+      return res.status(500).json({ error: "Cannot create Parametro" });
     }
   }
 
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const parameter = await Parameter.findAll();
+      const parameter = await Parametro.findAll();
       return res.json(parameter);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Parameters" });
@@ -28,12 +28,12 @@ export class ParameterController {
     const { id } = req.body;
 
     try {
-      const parameter = await Parameter.findOne({
+      const parameter = await Parametro.findOne({
         where: { id_parametro: id },
       });
       return res.json(parameter);
     } catch (e) {
-      return res.status(500).json({ error: "Parameter not found" });
+      return res.status(500).json({ error: "Parametro not found" });
     }
   }
 
@@ -42,20 +42,20 @@ export class ParameterController {
     const { id } = req.body;
 
     try {
-      const [updated] = await Parameter.update(req.body, {
+      const [updated] = await Parametro.update(req.body, {
         where: { id_parametro: id },
       });
 
       if (updated) {
-        const updatedParameter = await Parameter.findOne({
+        const updatedParameter = await Parametro.findOne({
           where: { id_parametro: id },
         });
         return res.json(updatedParameter);
       }
-      
-      throw new Error("Parameter not found");
+
+      throw new Error("Parametro not found");
     } catch (e) {
-      return res.status(500).json({ error: e});
+      return res.status(500).json({ error: e });
     }
   }
 
@@ -65,19 +65,19 @@ export class ParameterController {
     const { id } = req.body;
 
     try {
-      const ParameterToBeDeleted = await Parameter.findOne({
+      const ParameterToBeDeleted = await Parametro.findOne({
         where: { id_parametro: id },
       });
 
       if (!ParameterToBeDeleted) {
-        return res.status(404).json({ error: "Parameter not found" });
+        return res.status(404).json({ error: "Parametro not found" });
       }
       await ParameterToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Parameter deleted" });
+      return res.sendStatus(204).json({ message: "Parametro deleted" });
     } catch (e) {
-      return res.status(500).json({ error: "Cannot delete Parameter" });
+      return res.status(500).json({ error: "Cannot delete Parametro" });
     }
   }
 }
 
-export default new ParameterController();
+export default new ParametroController();

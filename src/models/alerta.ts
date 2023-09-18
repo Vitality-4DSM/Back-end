@@ -1,9 +1,9 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config";
-import { Parameter } from "./Parameter";
+import db from "../config/bd_config";
+import { Parametro } from "./parametro";
 
-export class Alert extends Model { }
-Alert.init(
+export class Alerta extends Model { }
+Alerta.init(
     {
         id_alerta: {
             type: DataTypes.INTEGER,
@@ -30,4 +30,4 @@ Alert.init(
 );
 
 
-Alert.belongsTo(Parameter,{ foreignKey: 'id_parametro'})
+Alerta.belongsTo(Parametro, { foreignKey: 'id_parametro' })

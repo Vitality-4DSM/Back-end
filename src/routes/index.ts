@@ -1,12 +1,12 @@
 import { Router, Request, Response } from "express";
-import login from "../controllers/Login";
-import station from "./station";
-import user from "./user";
+import login from "../controllers/login";
+import station from "./estacao";
+import user from "./usuario";
 import valor from "./valor";
-import typeParameter from "./typeParameter";
-import parameter from "./parameter";
-import alert from "./alert";
-import historicAlert from "./historicalert";
+import typeParameter from "./tipo_parametro";
+import parameter from "./parametro";
+import alert from "./alerta";
+import historicAlert from "./historico_alerta";
 
 const routes = Router();
 routes.post("/login", login);
@@ -19,5 +19,5 @@ routes.use("/alert", alert);
 routes.use("/historicalert", historicAlert);
 
 
-routes.use( (_:Request,res:Response) => res.json({error:"Requisição desconhecida"}) );
+routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));
 export default routes;

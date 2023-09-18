@@ -1,10 +1,10 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config";
-import { Alert } from "./Alert";
-import { Valor } from "./Valor";
+import db from "../config/bd_config";
+import { Alerta } from "./alerta";
+import { Valor } from "./valor";
 
-export class HistoricAlert extends Model { }
-HistoricAlert.init({
+export class HistoricoAlerta extends Model { }
+HistoricoAlerta.init({
     id_historico: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -15,12 +15,12 @@ HistoricAlert.init({
 },
     {
         timestamps: false,
-        sequelize: db, 
+        sequelize: db,
         modelName: "historico_alerta",
         tableName: "historico_alerta",
     }
 );
 
 
-HistoricAlert.belongsTo(Alert, { foreignKey: 'id_alerta' })
-HistoricAlert.belongsTo(Valor, { foreignKey: 'id_valor' }) 
+HistoricoAlerta.belongsTo(Alerta, { foreignKey: 'id_alerta' })
+HistoricoAlerta.belongsTo(Valor, { foreignKey: 'id_valor' }) 

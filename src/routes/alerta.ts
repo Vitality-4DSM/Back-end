@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import alert from '../controllers/AlertController';
-import { authorization , authAdmin} from "../autenticacao";
+import alert from '../controllers/alerta';
+import { authorization, authAdmin } from "../autenticacao";
 
 const routes = Router();
 routes.post('/', alert.create);
@@ -16,5 +16,5 @@ routes.delete('/', alert.delete);
 // routes.put('/', authorization, alert.update);
 // routes.delete('/', authorization, authAdmin , alert.delete);
 
-routes.use( (_:Request,res:Response) => res.json({error:"Requisição desconhecida"}) );
+routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));
 export default routes;

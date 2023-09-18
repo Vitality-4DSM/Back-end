@@ -1,14 +1,14 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config"; 
+import db from "../config/bd_config";
 
-export class Station extends Model { }
-Station.init(
+export class Estacao extends Model { }
+Estacao.init(
   {
     id_estacao: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false, 
+      allowNull: false,
       onDelete: "CASCADE",
     },
     identificador: {
@@ -20,11 +20,11 @@ Station.init(
       allowNull: false,
     },
     latitude: {
-      type: DataTypes.DECIMAL(9, 6), 
+      type: DataTypes.DECIMAL(9, 6),
       allowNull: false,
     },
     longitude: {
-      type: DataTypes.DECIMAL(8,6), 
+      type: DataTypes.DECIMAL(8, 6),
       allowNull: false,
     },
     instalacao: {
@@ -34,7 +34,7 @@ Station.init(
   },
   {
     timestamps: false,
-    sequelize: db, 
+    sequelize: db,
     modelName: "estacao",
     tableName: "estacao",
   }

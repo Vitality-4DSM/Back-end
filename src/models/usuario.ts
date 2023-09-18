@@ -1,8 +1,8 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config"; 
+import db from "../config/bd_config";
 
-export class User extends Model { }
-User.init(
+export class Usuario extends Model { }
+Usuario.init(
     {
         id_usuario: {
             type: DataTypes.INTEGER,

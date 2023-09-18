@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { generateToken } from '../middlewares';
-import users from './mock';
+import users from '../config/mock';
+
 async function login(req: Request, res: Response): Promise<Response> {
     const { mail } = req.body;
     //verifica se o e-mail existe

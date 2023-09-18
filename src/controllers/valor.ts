@@ -1,4 +1,4 @@
-import { Valor } from "../models/Valor";
+import { Valor } from "../models/valor";
 import { Request, Response } from "express";
 
 export class ValorController {
@@ -52,10 +52,10 @@ export class ValorController {
         });
         return res.json(updatedValor);
       }
-      
+
       throw new Error("Valor not found");
     } catch (e) {
-      return res.status(500).json({ error: e});
+      return res.status(500).json({ error: e });
     }
   }
 

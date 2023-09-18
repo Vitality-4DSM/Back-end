@@ -1,9 +1,9 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config"; 
+import db from "../config/bd_config";
 
-export class TypeParameter extends Model { }
-TypeParameter.init(
-    {   
+export class TipoParametro extends Model { }
+TipoParametro.init(
+    {
         id_tipo_parametro: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -22,7 +22,7 @@ TypeParameter.init(
         descricao: {
             type: DataTypes.STRING(300),
         },
-        json : {
+        json: {
             type: DataTypes.JSON,
             allowNull: false
         },
@@ -38,7 +38,7 @@ TypeParameter.init(
         },
     }, {
     timestamps: false,
-    sequelize: db, 
+    sequelize: db,
     modelName: "tipo_parametro",
     tableName: "tipo_parametro",
 }

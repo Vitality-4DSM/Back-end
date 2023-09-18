@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config";
-import { Parameter } from "./Parameter";
+import db from "../config/bd_config";
+import { Parametro } from "./parametro";
 
 export class Valor extends Model { }
 Valor.init({
@@ -23,10 +23,10 @@ Valor.init({
 },
     {
         timestamps: false,
-        sequelize: db, 
+        sequelize: db,
         modelName: "valor",
         tableName: "valor",
     }
 );
 
-Valor.belongsTo(Parameter, { foreignKey: 'id_parametro' });
+Valor.belongsTo(Parametro, { foreignKey: 'id_parametro' });
