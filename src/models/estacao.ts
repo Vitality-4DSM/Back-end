@@ -7,7 +7,7 @@ Estacao.init(
     id_estacao: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true,
+      primaryKey: true, 
       allowNull: false,
       onDelete: "CASCADE",
     },
