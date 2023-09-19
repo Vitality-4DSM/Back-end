@@ -66,7 +66,7 @@ export class ValorController {
 
     try {
       const ValorToBeDeleted = await Valor.findOne({
-        where: { id_usuario: id },
+        where: { id_valor: id },
       });
 
       if (!ValorToBeDeleted) {

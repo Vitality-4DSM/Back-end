@@ -18,7 +18,7 @@ export class TipoParametroController {
   async getAll(req: Request, res: Response) {
     try {
       const typeParameter = await TipoParametro.findAll();
-      return res.json(TipoParametro);
+      return res.json(typeParameter);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all TypeParameters" });
     }
