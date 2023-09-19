@@ -10,7 +10,7 @@ export class HistoricoAlertaController {
 
       return res.json(historicalert);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Historic Alerta" });
+      return res.status(500).json({ error: "Cannot create Historic Alerta" + e });
     }
   }
 

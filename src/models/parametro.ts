@@ -22,5 +22,5 @@ Parametro.init({
 );
 
 
-Parametro.belongsTo(Estacao, { foreignKey: 'id_estacao' });
-Parametro.belongsTo(TipoParametro, { foreignKey: 'id_tipo_parametro' });
+Parametro.belongsTo(Estacao, { foreignKey: {name:'fk_estacao', allowNull: false} });
+Parametro.belongsTo(TipoParametro, { foreignKey: {name:'fk_tipo_parametro', allowNull: false} });

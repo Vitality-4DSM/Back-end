@@ -30,4 +30,4 @@ Alerta.init(
 );
 
 
-Alerta.belongsTo(Parametro, { foreignKey: 'id_parametro' })
+Alerta.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false} })

@@ -31,7 +31,7 @@ db.sync().then(async () => {
             "cargo": "admin",
             "email": "joao.silva@example.com",
             "senha": "senha123",
-            "criado": "2023-01-21T10:00:00Z" 
+            "cadastro": "2023-01-21T10:00:00Z" 
         });
         console.log("Usuário admin criado com sucesso.");
     }

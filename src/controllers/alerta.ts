@@ -1,5 +1,6 @@
 import { Alerta } from "../models/alerta";
 import { Request, Response } from "express";
+import { Parametro } from "../models/parametro";
 
 export class AlertaController {
 
@@ -10,14 +11,14 @@ export class AlertaController {
 
       return res.json(alert);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Alerta" });
+      return res.status(500).json({ error: "Cannot create Alerta" + e});
     }
   }
 
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const alert = await Alerta.findAll();
+      const alert = await Alerta.findAll({include: Parametro});
       return res.json(alert);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Alerts" });

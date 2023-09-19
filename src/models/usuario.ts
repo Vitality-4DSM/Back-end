@@ -27,7 +27,7 @@ Usuario.init(
             type: DataTypes.STRING(30),
             allowNull: false,
         },
-        criado: {
+        cadastro: {
             type: DataTypes.DATE,
             allowNull: false,
         },

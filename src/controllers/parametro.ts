@@ -10,7 +10,7 @@ export class ParametroController {
 
       return res.json(parameter);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Parametro" });
+      return res.status(500).json({ error: "Cannot create Parametro" + e });
     }
   }
 

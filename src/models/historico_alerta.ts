@@ -12,6 +12,10 @@ HistoricoAlerta.init({
         allowNull: false,
         onDelete: "CASCADE",
     },
+    data: {
+        type: DataTypes.DATE,
+        allowNull: true,
+    },
 },
     {
         timestamps: false,
@@ -22,5 +26,5 @@ HistoricoAlerta.init({
 );
 
 
-HistoricoAlerta.belongsTo(Alerta, { foreignKey: 'id_alerta' })
-HistoricoAlerta.belongsTo(Valor, { foreignKey: 'id_valor' }) 
+HistoricoAlerta.belongsTo(Alerta, { foreignKey:{name:'fk_alerta', allowNull: false} })
+HistoricoAlerta.belongsTo(Valor, { foreignKey: {name:'fk_valor', allowNull: false} }) 

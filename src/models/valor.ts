@@ -29,4 +29,4 @@ Valor.init({
     }
 );
 
-Valor.belongsTo(Parametro, { foreignKey: 'id_parametro' });
+Valor.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false} });

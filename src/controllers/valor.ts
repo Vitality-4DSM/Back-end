@@ -10,7 +10,7 @@ export class ValorController {
 
       return res.json(valor);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Valor" });
+      return res.status(500).json({ error: "Cannot create Valor" + e});
     }
   }
 
