@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/bd_config";
-
+ 
 export class Usuario extends Model { }
 Usuario.init(
     {
@@ -11,7 +11,11 @@ Usuario.init(
             allowNull: false,
             onDelete: "CASCADE"
         },
-        perfil: {
+        nome: {
+            type: DataTypes.STRING(30),
+            allowNull: false,
+        },
+        cargo: {
             type: DataTypes.STRING(30),
             allowNull: false,
         },
