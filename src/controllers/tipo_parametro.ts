@@ -73,7 +73,7 @@ export class TipoParametroController {
         return res.status(404).json({ error: "TipoParametro not found" });
       }
       await TypeParameterToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "TipoParametro deleted" });
+      return res.sendStatus(204);
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete TipoParametro" });
     }

@@ -73,7 +73,7 @@ export class ValorController {
         return res.status(404).json({ error: "Valor not found" });
       }
       await ValorToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Valor deleted" });
+      return res.sendStatus(204);
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete Valor" });
     }

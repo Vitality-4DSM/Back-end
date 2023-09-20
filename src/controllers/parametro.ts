@@ -73,7 +73,7 @@ export class ParametroController {
         return res.status(404).json({ error: "Parametro not found" });
       }
       await ParameterToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Parametro deleted" });
+      return res.sendStatus(204);
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete Parametro" });
     }

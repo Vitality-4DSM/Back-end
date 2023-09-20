@@ -73,7 +73,7 @@ export class HistoricoAlertaController {
         return res.status(404).json({ error: "Historic Alerta not found" });
       }
       await HistoricAlertToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Historic Alerta deleted" });
+      return res.sendStatus(204);
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete Historic Alerta" });
     }

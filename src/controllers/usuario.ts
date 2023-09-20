@@ -73,7 +73,7 @@ export class UsuarioController {
         return res.status(404).json({ error: "Usuario not found" });
       }
       await userToBeDeleted.destroy();
-      return res.sendStatus(204).json({ message: "Usuario deleted" });
+      return res.sendStatus(204);
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete Usuario" });
     }
