@@ -1,23 +1,23 @@
-import { Station } from "../models/Station";
+import { Estacao } from "../models/estacao";
 import { Request, Response } from "express";
 
-export class StationController {
+export class EstacaoController {
 
   // CREATE
   async create(req: Request, res: Response) {
     try {
-      const station = await Station.create({ ...req.body });
+      const station = await Estacao.create({ ...req.body });
 
       return res.json(station);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Station" });
+      return res.status(500).json({ error: "Cannot create Estacao" });
     }
   }
 
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const stations = await Station.findAll();
+      const stations = await Estacao.findAll();
       return res.json(stations);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Stations" });
@@ -25,59 +25,59 @@ export class StationController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
-      const station = await Station.findOne({
+      const station = await Estacao.findOne({
         where: { id_estacao: id },
       });
       return res.json(station);
     } catch (e) {
-      return res.status(500).json({ error: "Station not found" });
+      return res.status(500).json({ error: "Estacao not found" });
     }
   }
 
   // UPDATE
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
-      const [updated] = await Station.update(req.body, {
+      const [updated] = await Estacao.update(req.body, {
         where: { id_estacao: id },
       });
 
       if (updated) {
-        const updatedStation = await Station.findOne({
+        const updatedStation = await Estacao.findOne({
           where: { id_estacao: id },
         });
         return res.json(updatedStation);
       }
-      
-      throw new Error("Station not found");
+
+      throw new Error("Estacao not found");
     } catch (e) {
-      return res.status(500).json({ error: e});
+      return res.status(500).json({ error: e });
     }
   }
 
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id } = req.body;
 
     try {
-      const userToBeDeleted = await Station.findOne({
+      const userToBeDeleted = await Estacao.findOne({
         where: { id_estacao: id },
       });
 
       if (!userToBeDeleted) {
-        return res.status(404).json({ error: "Station not found" });
+        return res.status(404).json({ error: "Estacao not found" });
       }
       await userToBeDeleted.destroy();
       return res.sendStatus(204);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot delete Station" });
+      return res.status(500).json({ error: "Cannot delete Estacao" });
     }
   }
 }
 
-export default new StationController();
+export default new EstacaoController();

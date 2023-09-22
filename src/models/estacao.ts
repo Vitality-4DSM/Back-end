@@ -1,30 +1,30 @@
 import { DataTypes, Model } from "sequelize";
-import db from "../config/Database.config"; // Asegúrate de que esto esté correctamente configurado
+import db from "../config/bd_config";
 
-export class Station extends Model { }
-Station.init(
+export class Estacao extends Model { }
+Estacao.init(
   {
     id_estacao: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true,
-      allowNull: false, 
+      primaryKey: true, 
+      allowNull: false,
       onDelete: "CASCADE",
     },
     identificador: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     status: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     latitude: {
-      type: DataTypes.DOUBLE, // Cambia a DataTypes.DOUBLE
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     longitude: {
-      type: DataTypes.DOUBLE, // Cambia a DataTypes.DOUBLE
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     instalacao: {
@@ -34,7 +34,7 @@ Station.init(
   },
   {
     timestamps: false,
-    sequelize: db, // Asegúrate de que db esté configurado correctamente
+    sequelize: db,
     modelName: "estacao",
     tableName: "estacao",
   }

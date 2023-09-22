@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize('api', 'root', 'root',{
+const db = new Sequelize('api', 'root', 'root', {
     host: 'localhost',
-    dialect:'mysql',
+    dialect: 'mysql',
     logging: true
 });
 

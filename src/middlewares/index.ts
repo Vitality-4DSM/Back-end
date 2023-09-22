@@ -31,8 +31,8 @@ export const authorization = async (req: Request, res: Response, next: NextFunct
 export const authAdmin = async (_: Request, res: Response, next: NextFunction) => {
     // obtém os dados do nível anterior da middleware,
     // isso evita ter de ler novamente req.headers.authorization
-    const { profile } = res.locals;
-    if (profile !== 'admin') {
+    const { cargo } = res.locals;
+    if (cargo !== 'admin') {
         return res.status(401).send({ error: "Sem autorização para acessar o recurso" });
     }
     return next(); //chama a próxima função
