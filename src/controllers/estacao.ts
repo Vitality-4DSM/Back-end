@@ -62,18 +62,10 @@ export class EstacaoController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.body;
-
+    const { id } = req.params;
     try {
-      const userToBeDeleted = await Estacao.findOne({
-        where: { id_estacao: id },
-      });
-
-      if (!userToBeDeleted) {
-        return res.status(404).json({ error: "Estacao not found" });
-      }
-      await userToBeDeleted.destroy();
-      return res.sendStatus(204);
+      await Estacao.destroy( {where: { id_estacao: id }});
+      return res.json({ message: "Estacao deletada" });
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete Estacao" });
     }

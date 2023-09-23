@@ -23,18 +23,31 @@ db.sync().then(async () => {
     console.log('Banco de dados sincronizado.');
 
     const admin = await Usuario.findOne({ where: { cargo: "admin" } });
-    
+    const user = await Usuario.findOne({ where: { cargo: "user" } });
+
     if (!admin) {
         // Crie o usuário admin se ele não existir
         await Usuario.create({
             "nome": "João Silva",
             "cargo": "admin",
-            "email": "joao.silva@example.com",
-            "senha": "senha123",
+            "email": "admin@gmail",
+            "senha": "123",
             "cadastro": "2023-01-21T10:00:00Z" 
         });
         console.log("Usuário admin criado com sucesso.");
+    } 
+    if (!user) {
+        // Crie o usuário user se ele não existir
+        await Usuario.create({
+            "nome": "Maria Silva",
+            "cargo": "user",
+            "email": "user@gmail",
+            "senha": "123",
+            "cadastro": "2023-01-21T10:00:00Z" 
+        });
+        console.log("Usuário user criado com sucesso.");
     }
+
     app.listen(PORT, () => {
         console.log(`Rodando na porta ${PORT}`);
     });
