@@ -7,7 +7,6 @@ export class TipoParametroController {
   async create(req: Request, res: Response) {
     try {
       const typeParameter = await TipoParametro.create({ ...req.body });
-
       return res.json(typeParameter);
     } catch (e) {
       return res.status(500).json({ error: "Cannot create TipoParametro" });
@@ -62,20 +61,12 @@ export class TipoParametroController {
 
   // DELETE
   async delete(req: Request, res: Response) {
-    const { id } = req.body;
-
+    const { id } = req.params;
     try {
-      const TypeParameterToBeDeleted = await TipoParametro.findOne({
-        where: { id_tipo_parametro: id },
-      });
-
-      if (!TypeParameterToBeDeleted) {
-        return res.status(404).json({ error: "TipoParametro not found" });
-      }
-      await TypeParameterToBeDeleted.destroy();
-      return res.sendStatus(204);
+      await TipoParametro.destroy({where: { id_tipo_parametro: id }});
+      return res.json({ message: "TipoParametro deletado." });
     } catch (e) {
-      return res.status(500).json({ error: "Cannot delete TipoParametro" });
+      return res.status(500).json({ error: "Cannot delete TipoParametro" + e });
     }
   }
 }

@@ -7,7 +7,7 @@ routes.post('/', TipoParametro.create);
 routes.get('/get', TipoParametro.getById);
 routes.get('/', TipoParametro.getAll);
 routes.put('/', TipoParametro.update);
-routes.delete('/', TipoParametro.delete);
+routes.delete('/:id', TipoParametro.delete);
 
 // SOMENTE O ADMIN ACESSA CREATE E O DELETE
 // routes.post('/', authorization, authAdmin ,TipoParametro.create);

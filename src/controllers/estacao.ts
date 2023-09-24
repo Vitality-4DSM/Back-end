@@ -65,7 +65,7 @@ export class EstacaoController {
     const { id } = req.params;
     try {
       await Estacao.destroy( {where: { id_estacao: id }});
-      return res.json({ message: "Estacao deletada" });
+      return res.json({ message: "Estação deletada." });
     } catch (e) {
       return res.status(500).json({ error: "Cannot delete Estacao" });
     }
