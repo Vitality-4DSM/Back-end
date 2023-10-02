@@ -6,7 +6,7 @@ describe("Inicialização do model de HistoricoAlerta", () => {
         expect(HistoricoAlerta).to.have.property("name", "historico_alerta");
         expect(HistoricoAlerta).to.have.property("tableName", "historico_alerta");
         expect(HistoricoAlerta).to.have.property("rawAttributes").to.have.property("id_historico");
-        expect(HistoricoAlerta).to.have.property("rawAttributes").to.have.property("id_alerta");
-        expect(HistoricoAlerta).to.have.property("rawAttributes").to.have.property("id_valor");
+        expect(HistoricoAlerta).to.have.property("rawAttributes").to.have.property("fk_alerta");
+        expect(HistoricoAlerta).to.have.property("rawAttributes").to.have.property("fk_valor");
     });
 });
