@@ -6,7 +6,7 @@ describe("Inicialização do model de Valor", () => {
         expect(Valor).to.have.property("name", "valor");
         expect(Valor).to.have.property("tableName", "valor");
         expect(Valor).to.have.property("rawAttributes").to.have.property("id_valor");
-        expect(Valor).to.have.property("rawAttributes").to.have.property("id_parametro");
+        expect(Valor).to.have.property("rawAttributes").to.have.property("fk_parametro");
         expect(Valor).to.have.property("rawAttributes").to.have.property("valor");
         expect(Valor).to.have.property("rawAttributes").to.have.property("unixtime");
     });

@@ -24,13 +24,3 @@ export const authorization = async (req: Request, res: Response, next: NextFunct
     }
     return next(); //chama a próxima função
 };
-
-export const authAdmin = async (req: Request, res: Response, next: NextFunction) => {
-    // verifica se o usuário tem o cargo de admin
-    const { cargo } = res.locals;
-    if (cargo !== "admin") {
-        return res.status(401).send({ error: "Cargo não autorizado" });
-    }
-    return next();
-};
-
