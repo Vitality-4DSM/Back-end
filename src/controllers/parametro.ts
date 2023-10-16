@@ -78,6 +78,23 @@ export class ParametroController {
       return res.status(500).json({ error: "Cannot delete Parametro" });
     }
   }
+
+  // leitura de parametro por tipo de parametro
+  async getByFkTipoParametro(req: Request, res: Response) {
+    const { id } = req.body;
+
+    try {
+      const parameter = await Parametro.findAll({
+        where: { fk_tipo_parametro: id },
+      });
+      return res.json(parameter);
+    } catch (e) {
+      return res.status(500).json({ error: "Parametro not found" });
+    }
+  }
 }
+
+
+
 
 export default new ParametroController();
