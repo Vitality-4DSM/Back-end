@@ -4,6 +4,7 @@ import cors from 'cors'; // Importe o 'cors' desta forma
 import dotenv from "dotenv";
 import { Usuario } from "./models/usuario";
 import db from "./config/bd_config";
+import { sha512 } from "sha512-crypt-ts";
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -31,7 +32,7 @@ db.sync().then(async () => {
             "nome": "João Silva",
             "cargo": "admin",
             "email": "admin@gmail",
-            "senha": "123",
+            "senha": sha512.crypt("123","password"),
             "cadastro": "2023-01-21T10:00:00Z" 
         });
         console.log("Usuário admin criado com sucesso.");
@@ -42,7 +43,7 @@ db.sync().then(async () => {
             "nome": "Maria Silva",
             "cargo": "user",
             "email": "user@gmail",
-            "senha": "123",
+            "senha": sha512.crypt("123","password"),
             "cadastro": "2023-01-21T10:00:00Z" 
         });
         console.log("Usuário user criado com sucesso.");

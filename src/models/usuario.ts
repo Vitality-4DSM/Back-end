@@ -24,7 +24,7 @@ Usuario.init(
             allowNull: false,
         },
         senha: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.STRING(100),
             allowNull: false,
         },
         cadastro: {
