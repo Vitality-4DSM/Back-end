@@ -85,16 +85,16 @@ async function sincronizar(){
     
   for (let i = 0; i < lista.length; i++) {
     let json_do_banco_nao_relacional = lista[i];
-    let json_estacao = json_do_banco_nao_relacional.json.json_estacao;
-    let json_tranformado_em_objeto = JSON.parse(json_estacao);
-
+    let json_estacao = json_do_banco_nao_relacional.json;
+    console.log(json_estacao)
+    //console.log(json_tranformado_em_objeto)
     // Descobrindo id da estação
 
     const response = await fetch('http://localhost:3001/station/');
     const data = await response.json();
     
     ids_estacao = []
-    await processarEstacao(data, json_tranformado_em_objeto, ids_estacao);
+    await processarEstacao(data, json_estacao, ids_estacao);
 
     // Descobrindo id do tipo de parametro
 
@@ -102,7 +102,7 @@ async function sincronizar(){
     const dataTipoDeParametros = await responseTipoDeParametros.json();
 
     ids_tipo_parametro = []
-    await processarTipoParametros(dataTipoDeParametros, json_tranformado_em_objeto, ids_tipo_parametro);
+    await processarTipoParametros(dataTipoDeParametros, json_estacao, ids_tipo_parametro);
 
     // Descobrindo id do parametro
 
@@ -110,7 +110,7 @@ async function sincronizar(){
     const dataParametros = await responseParametros.json();
 
     var ids_parametro = [];
-    await processarParametros(dataParametros, json_tranformado_em_objeto, ids_estacao, ids_tipo_parametro, ids_parametro, valores);
+    await processarParametros(dataParametros, json_estacao, ids_estacao, ids_tipo_parametro, ids_parametro, valores);
 
     await Banco_mongo.updateOne(
       { _id: json_do_banco_nao_relacional._id },

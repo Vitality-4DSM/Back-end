@@ -23,7 +23,7 @@ TipoParametro.init(
             type: DataTypes.STRING(300),
         },
         json: {
-            type: DataTypes.JSON,
+            type: DataTypes.STRING,
             allowNull: false
         },
         fator: {

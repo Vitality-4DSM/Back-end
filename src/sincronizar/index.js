@@ -4,9 +4,9 @@ async function runSync() {
     while (true) {
         console.log('Iniciando a sincronização...');
 
-        exec('node sincronizar.ts', (error, stdout, stderr) => {
+        exec('node sincronizar.js', (error, stdout, stderr) => {
             if (error) {
-                console.error(`Erro: ${error}`);
+                console.error(`Erro: ${error.message}`);
             }
             console.log(`Sincronização concluída:\n${stdout}`);
             console.error(`Erros:\n${stderr}`);
