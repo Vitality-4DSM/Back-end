@@ -1,5 +1,6 @@
 import { Parametro } from "../models/parametro";
 import { Request, Response } from "express";
+import { TipoParametro } from "../models/tipo_parametro";
 
 export class ParametroController {
 
@@ -25,11 +26,11 @@ export class ParametroController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.body;
+    const { id } = req.params;
 
     try {
       const parameter = await Parametro.findOne({
-        where: { id_parametro: id },
+        where: { id_parametro: id }, include: [{all: true}]
       });
       return res.json(parameter);
     } catch (e) {

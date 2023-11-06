@@ -25,7 +25,7 @@ export class EstacaoController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.body;
+    const { id } = req.params;
 
     try {
       const station = await Estacao.findOne({

@@ -24,7 +24,7 @@ export class TipoParametroController {
   }
 
   async getById(req: Request, res: Response) {
-    const { id } = req.body;
+    const { id } = req.params;
 
     try {
       const typeParameter = await TipoParametro.findOne({

@@ -11,10 +11,10 @@ const routes = Router();
 
 // SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', authorization, user.create);
-routes.get('/get', authorization, user.getById);
+routes.get('/:id', authorization, user.getById);
 routes.get('/', authorization, user.getAll);
 routes.put('/', authorization, user.update);
-routes.delete('/', authorization,  user.delete);
+routes.delete('/:id', authorization,  user.delete);
 
 
 routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));

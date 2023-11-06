@@ -11,7 +11,7 @@ const routes = Router();
 
 // SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', authorization, station.create);
-routes.get('/get', station.getById);
+routes.get('/:id', station.getById);
 routes.get('/', station.getAll);
 routes.put('/', authorization, station.update);
 routes.delete('/:id', authorization,  station.delete);
