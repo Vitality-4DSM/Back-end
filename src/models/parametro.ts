@@ -10,7 +10,7 @@ Parametro.init({
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
-        onDelete: "CASCADE",
+        // onDelete: "CASCADE",
     },
 },
     {
@@ -22,5 +22,5 @@ Parametro.init({
 );
 
 
-Parametro.belongsTo(Estacao, { foreignKey: {name:'fk_estacao', allowNull: false} });
-Parametro.belongsTo(TipoParametro, { foreignKey: {name:'fk_tipo_parametro', allowNull: false} });
+Parametro.belongsTo(Estacao, { foreignKey: {name:'fk_estacao', allowNull: false}, onDelete: "CASCADE" });
+Parametro.belongsTo(TipoParametro, { foreignKey: {name:'fk_tipo_parametro', allowNull: false}, onDelete: "CASCADE" });

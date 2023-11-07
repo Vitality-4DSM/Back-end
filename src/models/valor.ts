@@ -9,7 +9,7 @@ Valor.init({
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
-        onDelete: "CASCADE",
+        // onDelete: "CASCADE",
     },
 
     valor: {
@@ -29,4 +29,4 @@ Valor.init({
     }
 );
 
-Valor.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false} });
+Valor.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false}, onDelete: "CASCADE" });

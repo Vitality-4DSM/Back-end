@@ -10,7 +10,7 @@ Alerta.init(
             autoIncrement: true,
             primaryKey: true,
             allowNull: false,
-            onDelete: "CASCADE",
+            // onDelete: "CASCADE",
         },
         valor: {
             type: DataTypes.INTEGER,
@@ -30,4 +30,4 @@ Alerta.init(
 );
 
 
-Alerta.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false} })
+Alerta.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false}, onDelete: "CASCADE" })

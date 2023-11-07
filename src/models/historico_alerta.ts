@@ -10,7 +10,7 @@ HistoricoAlerta.init({
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
-        onDelete: "CASCADE",
+        // onDelete: "CASCADE",
     },
     data: {
         type: DataTypes.DATE,
@@ -26,5 +26,5 @@ HistoricoAlerta.init({
 );
 
 
-HistoricoAlerta.belongsTo(Alerta, { foreignKey:{name:'fk_alerta', allowNull: false} })
-HistoricoAlerta.belongsTo(Valor, { foreignKey: {name:'fk_valor', allowNull: false} }) 
+HistoricoAlerta.belongsTo(Alerta, { foreignKey:{name:'fk_alerta', allowNull: false}, onDelete: "CASCADE" })
+HistoricoAlerta.belongsTo(Valor, { foreignKey: {name:'fk_valor', allowNull: false} , onDelete: "CASCADE"}) 

@@ -9,7 +9,7 @@ Usuario.init(
             autoIncrement: true,
             primaryKey: true,
             allowNull: false,
-            onDelete: "CASCADE"
+            // onDelete: "CASCADE"
         },
         nome: {
             type: DataTypes.STRING(30),
