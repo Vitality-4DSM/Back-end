@@ -78,6 +78,20 @@ export class UsuarioController {
       return res.status(500).json({ error: "Cannot delete Usuario" });
     }
   }
+
+  async getByEmail(req: Request, res: Response) {
+    const { email } = req.params;
+
+    try {
+      const user = await Usuario.findOne({
+        where: { email: email },
+      });
+      return res.json(user);
+    } catch (e) {
+      return res.status(500).json({ error: "Usuario not found" });
+    }
+  }
+
 }
 
 export default new UsuarioController();

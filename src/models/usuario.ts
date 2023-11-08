@@ -22,6 +22,7 @@ Usuario.init(
         email: {
             type: DataTypes.STRING(30),
             allowNull: false,
+            unique: true,
         },
         senha: {
             type: DataTypes.STRING(100),
