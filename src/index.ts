@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import { Usuario } from "./models/usuario";
 import db from "./config/bd_config";
 import { sha512 } from "sha512-crypt-ts";
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 dotenv.config();

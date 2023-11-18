@@ -12,16 +12,16 @@ Alerta.init(
             allowNull: false,
             // onDelete: "CASCADE",
         },
-        NomeDaEstação: {
-            type: DataTypes.STRING(60),
-            allowNull: false,
-        },
         TipoDeAlerta: {
             type: DataTypes.STRING(2),
             allowNull: false,
         },
         valor: {
             type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        data: {
+            type: DataTypes.DATE,
             allowNull: false,
         },
     },
