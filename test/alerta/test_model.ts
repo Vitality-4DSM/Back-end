@@ -6,7 +6,8 @@ describe('Inicialização do model de Alerta', () => {
         expect(Alerta).to.have.property('name', 'alerta');
         expect(Alerta).to.have.property('tableName', 'alerta');
         expect(Alerta).to.have.property('rawAttributes').to.have.property('id_alerta');
+        expect(Alerta).to.have.property('rawAttributes').to.have.property('NomeDaEstação');
+        expect(Alerta).to.have.property('rawAttributes').to.have.property('TipoDeAlerta');
         expect(Alerta).to.have.property('rawAttributes').to.have.property('valor');
-        expect(Alerta).to.have.property('rawAttributes').to.have.property('sinal');
     });
 });
