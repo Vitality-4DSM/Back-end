@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, Long } = require('mongodb');
 const uri = "mongodb+srv://admin:TZfuObZEL9K2OXaz@vitality-gaia.joxmt67.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   serverApi: {
@@ -15,13 +15,14 @@ async function processarEstacao(data, json_tranformado_em_objeto, ids_estacao) {
     return item;
   });
 
+
   ListaChavesDoRelacional.forEach(itemRelacional => {
     for (const key in json_tranformado_em_objeto) {
       if (json_tranformado_em_objeto[key] === itemRelacional.identificador) {
         ids_estacao.push(itemRelacional.id_estacao);
         break;
       }
-      }
+    }
   });
 }
 
@@ -45,10 +46,10 @@ async function processarParametros(data, json_tranformado_em_objeto, ids_estacao
   for (const Id_Estacao of ids_estacao) {
     for (const tipoParametro of ids_tipo_parametro) {
       // Filtro que verificar os parâmetros que correspondem à estação e ao tipo de parâmetro.
-      const EncontrarParametros = data.filter(parametro => 
+      const EncontrarParametros = data.filter(parametro =>
         parametro.fk_estacao === Id_Estacao && parametro.fk_tipo_parametro === tipoParametro.id_tipo_parametro
       );
-      
+
       EncontrarParametros.forEach(parametro => {
         ids_parametro.push(parametro.id_parametro);
 
@@ -69,36 +70,33 @@ async function processarParametros(data, json_tranformado_em_objeto, ids_estacao
   }
 }
 
-async function sincronizar(){
+async function sincronizar() {
   // acessando o banco não relacional e a coleção armazenamento
   await client.connect();
   const db = client.db('banco_nao_relacional');
   const Banco_mongo = db.collection('armazenamento');
 
   // lista formada por um get da coleção armazenamento, com o parametro de apenas vir o que tiver o campo convertido = false
-  const lista = await Banco_mongo.find({convertido : false}).toArray();   
+  const lista = await Banco_mongo.find({ convertido: true }).toArray();
 
   var ids_estacao = [];
   var ids_tipo_parametro = [];
   var ids_parametro = [];
   var valores = [];
-    
-  for (let i = 0; i < lista.length; i++) {
+  //lista.length
+  for (let i = 0; i < 3; i++) {
     let json_do_banco_nao_relacional = lista[i];
     let json_estacao = json_do_banco_nao_relacional.json;
-    console.log(json_estacao)
-    //console.log(json_tranformado_em_objeto)
-    // Descobrindo id da estação
 
-    const response = await fetch('http://localhost:3001/station/');
+    const response = await fetch('http://localhost:3001/station/', { headers: { 'x-api-key': '4554545sdsdsd5454' } });
     const data = await response.json();
-    
+
     ids_estacao = []
     await processarEstacao(data, json_estacao, ids_estacao);
 
     // Descobrindo id do tipo de parametro
 
-    const responseTipoDeParametros = await fetch('http://localhost:3001/typeparameter/');
+    const responseTipoDeParametros = await fetch('http://localhost:3001/typeparameter/', { headers: { 'x-api-key': '4554545sdsdsd5454' } });
     const dataTipoDeParametros = await responseTipoDeParametros.json();
 
     ids_tipo_parametro = []
@@ -106,47 +104,106 @@ async function sincronizar(){
 
     // Descobrindo id do parametro
 
-    const responseParametros = await fetch('http://localhost:3001/parameter/');
+    const responseParametros = await fetch('http://localhost:3001/parameter/', { headers: { 'x-api-key': '4554545sdsdsd5454' } });
     const dataParametros = await responseParametros.json();
 
     var ids_parametro = [];
     await processarParametros(dataParametros, json_estacao, ids_estacao, ids_tipo_parametro, ids_parametro, valores);
 
-    await Banco_mongo.updateOne(
-      { _id: json_do_banco_nao_relacional._id },
-      { $set: { convertido: true } }
-    );
+    // await Banco_mongo.updateOne(
+    //   { _id: json_do_banco_nao_relacional._id },
+    //   { $set: { convertido: true } }
+    // );
 
     //consoles log para poder verificar informações trazidas durante o processo, clique na seta para expandir ou recolher
-    //console.log("json do banco não relacional:")
-    //console.log(json_tranformado_em_objeto);
-    //console.log("-----------------------------------")
-    //console.log("id da estação:");
-    //console.log(ids_estacao);
-    //console.log("-----------------------------------")
-    //console.log("ids do tipo de parametro:");
-    //console.log(ids_tipo_parametro)
-    //console.log("-----------------------------------")
-    //console.log("ids do parametro:");
-    //console.log(ids_parametro);
-    //console.log("-----------------------------------")
-    //console.log("valores:");
-    //console.log(valores);
-    //console.log("-----------------------------------")
+    // console.log("json do banco não relacional:")
+    // console.log(json_estacao);
+    // console.log("-----------------------------------")
+    // console.log("id da estação:");
+    // console.log(ids_estacao);
+    // console.log("-----------------------------------")
+    // console.log("ids do tipo de parametro:");
+    // console.log(ids_tipo_parametro)
+    // console.log("-----------------------------------")
+    // console.log("ids do parametro:");
+    // console.log(ids_parametro);
+    // console.log("-----------------------------------")
+    // console.log("valores:");
+    // console.log(valores);
+    // console.log("-----------------------------------")
+    // console.log("alertas:");
+    // console.log(dataAlerta);
+    // console.log("-----------------------------------")
     //console.log("")
   }
 
-// pega a lista de valores e faz post um por um
-  valores.forEach(valorObj => {fetch('http://localhost:3001/valor/', {method: 'POST', headers: {'Content-Type': 'application/json'}, 
-      body: JSON.stringify(valorObj)
-    }).then(response => response.json()).then(data => {
-      console.log(data);
+  const responseAlerta = await fetch('http://localhost:3001/alert/', { headers: { 'x-api-key': '4554545sdsdsd5454' } });
+  const dataAlerta = await responseAlerta.json();
 
-    }).catch(error => {
-      console.error(error);
+  // console.log("valores:");
+  // console.log(valores);
+  // console.log("-----------------------------------")
+  // console.log("alertas:");
+  // console.log(dataAlerta);
+  // console.log("-----------------------------------")
 
+  valores.forEach(valor => {
+    dataAlerta.forEach(alerta => {
+
+      if (valor.fk_parametro === alerta.fk_parametro) {
+        let tipo = alerta.TipoDeAlerta;
+
+        if (tipo === "==") {
+          if (valor.valor == alerta.valor) {
+            console.log(valor)
+            console.log("Alerta de valor igual")
+
+            // valores.forEach(valorObj => {fetch('http://localhost:3001/valor/', {method: 'POST', headers: {'Content-Type': 'application/json', 'x-api-key': '4554545sdsdsd5454'}, 
+            //     body: JSON.stringify(valorObj)
+            //   }).then(response => response.json()).then(data => {
+            //     console.log(data);
+
+            //   }).catch(error => {
+            //     console.error(error);
+
+            //   });
+            // });
+
+
+          }
+        }
+
+        if (tipo === ">") {
+          if (valor.valor > alerta.valor) {
+            console.log("Alerta de valor maior")
+
+
+          }
+        }
+
+        if (tipo === "<") {
+          if (valor.valor < alerta.valor) {
+            console.log("Alerta de valor menor")
+
+
+          }
+        }
+
+      }
     });
   });
+
+  // pega a lista de valores e faz post um por um
+  // valores.forEach(valorObj => {fetch('http://localhost:3001/valor/', {method: 'POST', headers: {'Content-Type': 'application/json'}, 
+  //     body: JSON.stringify(valorObj)
+  //   }).then(response => response.json()).then(data => {
+  //     console.log(data);
+
+  //   }).catch(error => {
+  //     console.error(error);
+
+  //   });
+  // });
 }
 
 sincronizar()
