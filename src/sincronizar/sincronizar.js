@@ -77,14 +77,14 @@ async function sincronizar() {
   const Banco_mongo = db.collection('armazenamento');
 
   // lista formada por um get da coleção armazenamento, com o parametro de apenas vir o que tiver o campo convertido = false
-  const lista = await Banco_mongo.find({ convertido: true }).toArray();
+  const lista = await Banco_mongo.find({ convertido: false }).toArray();
 
   var ids_estacao = [];
   var ids_tipo_parametro = [];
   var ids_parametro = [];
   var valores = [];
   //lista.length
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < lista.length; i++) {
     let json_do_banco_nao_relacional = lista[i];
     let json_estacao = json_do_banco_nao_relacional.json;
 
@@ -110,10 +110,10 @@ async function sincronizar() {
     var ids_parametro = [];
     await processarParametros(dataParametros, json_estacao, ids_estacao, ids_tipo_parametro, ids_parametro, valores);
 
-    // await Banco_mongo.updateOne(
-    //   { _id: json_do_banco_nao_relacional._id },
-    //   { $set: { convertido: true } }
-    // );
+    await Banco_mongo.updateOne(
+      { _id: json_do_banco_nao_relacional._id },
+      { $set: { convertido: true } }
+    );
 
     //consoles log para poder verificar informações trazidas durante o processo, clique na seta para expandir ou recolher
     // console.log("json do banco não relacional:")
@@ -194,16 +194,16 @@ async function sincronizar() {
   });
 
   // pega a lista de valores e faz post um por um
-  // valores.forEach(valorObj => {fetch('http://localhost:3001/valor/', {method: 'POST', headers: {'Content-Type': 'application/json'}, 
-  //     body: JSON.stringify(valorObj)
-  //   }).then(response => response.json()).then(data => {
-  //     console.log(data);
+  valores.forEach(valorObj => {fetch('http://localhost:3001/valor/', {method: 'POST', headers: {'Content-Type': 'application/json', 'x-api-key': '4554545sdsdsd5454'}, 
+      body: JSON.stringify(valorObj)
+    }).then(response => response.json()).then(data => {
+      console.log(data);
 
-  //   }).catch(error => {
-  //     console.error(error);
+    }).catch(error => {
+      console.error(error);
 
-  //   });
-  // });
+    });
+  });
 }
 
 sincronizar()
