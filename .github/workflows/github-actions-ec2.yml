@@ -1,0 +1,70 @@
+name: Deploy to EC2 on Pull Request Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  deploy-main:
+    name: Deploy na Main quando tiver Merge
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEYS }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "~/Backend"
+
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.EC2_SSH_KEYS }}
+          script: |
+            ssh -i FATEC-EQ2.pem ubuntu@34.193.65.107 
+            cd Backend
+            cd main
+            rm -rf Back-end
+            git clone https://github.com/Vitality-4DSM/Back-end.git
+            cd Back-end
+            npm install
+            fuser -k 3000/tcp
+            npm run dev
+
+  deploy-develop:
+    name: Deploy na Develop quando tiver Merge
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'develop'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEYS }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: "~/Backend"
+
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.EC2_SSH_KEYS }}
+          script: |
+            ssh -i FATEC-EQ2.pem ubuntu@34.193.65.107 
+            cd Backend
+            cd develop
+            rm -rf Back-end
+            git clone https://github.com/Vitality-4DSM/Back-end.git 
+            cd Back-end
+            git checkout develop
+            npm install
+            fuser -k 3000/tcp
+            npm run dev
