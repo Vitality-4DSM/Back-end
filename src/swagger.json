@@ -1,0 +1,1279 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Documentação de rotas do projeto Vitality",
+        "description": "Aqui temos a documentação de todas as rotas do projeto Vitality, com exemplos de como elas podem ser usadas.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3001",
+            "description": "Servidor Back-end"
+        }
+    ],
+    "paths": {
+        "/station": {
+            "description": "Aqui temos exemplo de como essa rota pode ser usada para realizar um create",
+            "post": {
+                "summary": "CREATE de uma estação",
+                "description": "Criar uma estação",
+                "tags": [
+                    "Station"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Station"
+                            },
+                            "examples": {
+                                "station": {
+                                    "value": {
+                                        "identificador": 1,
+                                        "status": "Ativo",
+                                        "latitude": -23.5489,
+                                        "longitude": -46.6388,
+                                        "instalacao": "2021-09-01",
+                                        "parametro": "CO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Estação criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Station"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/station/:id": {
+            "get": {
+                "summary": "READ de uma estação",
+                "description": "Ler uma estação",
+                "tags": [
+                    "Station"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da estação",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Estação lida com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Station"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/station/getAll": {
+            "get": {
+                "summary": "READ de todas as estações",
+                "description": "Ler todas as estações",
+                "tags": [
+                    "Station"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Estações lidas com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Station"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/station/": {
+            "put": {
+                "summary": "UPDATE de uma estação",
+                "description": "Atualizar uma estação",
+                "tags": [
+                    "Station"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Station"
+                            },
+                            "examples": {
+                                "station": {
+                                    "value": {
+                                        "identificador": 1,
+                                        "status": "Ativo",
+                                        "latitude": -23.5489,
+                                        "longitude": -46.6388,
+                                        "instalacao": "2021-09-01",
+                                        "parametro": "CO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Estação atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Station"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/station/id": {
+            "delete": {
+                "summary": "DELETE de uma estação",
+                "description": "Deletar uma estação",
+                "tags": [
+                    "Station"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da estação",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Estação deletada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Station"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/": {
+            "post": {
+                "summary": "CREATE de um alerta",
+                "description": "Criar um alerta",
+                "tags": [
+                    "Alerta"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Alerta"
+                            },
+                            "examples": {
+                                "alerta": {
+                                    "value": {
+                                        "id_alerta": 1,
+                                        "valor": 1,
+                                        "sinal": "Ativo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Alerta criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Alerta"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "/ READ de todos alertas do sistema",
+                "description": "Ler todos os alertas do sistema",
+                "tags": [
+                    "Alerta"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do alerta",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Alerta lido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "/ UPDATE de um alerta",
+                "description": "Atualizar um alerta",
+                "tags": [
+                    "Alerta"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Alerta"
+                            },
+                            "examples": {
+                                "alerta": {
+                                    "value": {
+                                        "id_alerta": 1,
+                                        "valor": 1,
+                                        "sinal": "Ativo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Alerta atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "alert/get": {
+            "get": {
+                "summary": "READ de um alerta",
+                "description": "Ler um alerta",
+                "tags": [
+                    "Alerta"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do alerta",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Alerta lido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert/:id": {
+            "delete": {
+                "summary": "DELETE de um alerta",
+                "description": "Deletar um alerta",
+                "tags": [
+                    "Alerta"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do alerta",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Alerta deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/historicalert/get": {
+            "get": {
+                "summary": "READ de um histórico de alerta",
+                "description": "Ler um histórico de alerta",
+                "tags": [
+                    "Historico_Alerta"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do histórico de alerta",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Histórico de alerta lido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Historico_Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/historicalert/": {
+            "post": {
+                "summary": "CREATE de um histórico de alerta",
+                "description": "Criar um histórico de alerta",
+                "tags": [
+                    "Historico_Alerta"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Historico_Alerta"
+                            },
+                            "examples": {
+                                "historico_alerta": {
+                                    "value": {
+                                        "id_historico": 1,
+                                        "data": "2021-09-01"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Histórico de alerta criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Historico_Alerta"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "READ de todos os históricos de alerta",
+                "description": "Ler todos os históricos de alerta",
+                "tags": [
+                    "Historico_Alerta"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Históricos de alerta lidos com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Historico_Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "UPDATE de um histórico de alerta",
+                "description": "Atualizar um histórico de alerta",
+                "tags": [
+                    "Historico_Alerta"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Historico_Alerta"
+                            },
+                            "examples": {
+                                "historico_alerta": {
+                                    "value": {
+                                        "id_historico": 1,
+                                        "data": "2021-09-01"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Histórico de alerta atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Historico_Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "DELETE de um histórico de alerta",
+                "description": "Deletar um histórico de alerta",
+                "tags": [
+                    "Historico_Alerta"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do histórico de alerta",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Histórico de alerta deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Historico_Alerta"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/typeparameter/": {
+            "post": {
+                "summary": "CREATE de um parâmetro",
+                "description": "Criar um parâmetro",
+                "tags": [
+                    "Parametro"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Parametro"
+                            },
+                            "examples": {
+                                "parametro": {
+                                    "value": {
+                                        "id_parametro": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Parâmetro criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Parametro"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "READ de todos os parâmetros",
+                "description": "Ler todos os parâmetros",
+                "tags": [
+                    "Parametro"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Parâmetros lidos com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Parametro"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "update": {
+                "summary": "UPDATE de um parâmetro",
+                "description": "Atualizar um parâmetro",
+                "tags": [
+                    "Parametro"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Parametro"
+                            },
+                            "examples": {
+                                "parametro": {
+                                    "value": {
+                                        "id_parametro": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Parâmetro atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Parametro"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/typeparameter/:id":{
+            "get":{
+                "summary": "READ de um parâmetro",
+                "description": "Ler um parâmetro",
+                "tags": [
+                    "Parametro"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do parâmetro",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Parâmetro lido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Parametro"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "DELETE de um parâmetro",
+                "description": "Deletar um parâmetro",
+                "tags": [
+                    "Parametro"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do parâmetro",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Parâmetro deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Parametro"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/valor/:id":{
+            "get":{
+                "summary": "READ de um valor",
+                "description": "Ler um valor",
+                "tags": [
+                    "Valor"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do valor",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Valor lido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Valor"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/valor":{
+            "get":{
+                "summary": "READ de todos os valores",
+                "description": "Ler todos os valores",
+                "tags": [
+                    "Valor"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Valores lidos com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Valor"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post":{
+                "summary": "CREATE de um valor",
+                "description": "Criar um valor",
+                "tags": [
+                    "Valor"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Valor"
+                            },
+                            "examples": {
+                                "valor": {
+                                    "value": {
+                                        "id_valor": 1,
+                                        "valor": 1,
+                                        "unixtime": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Valor criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Valor"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put":{
+                "summary": "UPDATE de um valor",
+                "description": "Atualizar um valor",
+                "tags": [
+                    "Valor"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Valor"
+                            },
+                            "examples": {
+                                "valor": {
+                                    "value": {
+                                        "id_valor": 1,
+                                        "valor": 1,
+                                        "unixtime": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Valor atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Valor"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete":{
+                "summary": "DELETE de um valor",
+                "description": "Deletar um valor",
+                "tags": [
+                    "Valor"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do valor",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Valor deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Valor"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user":{
+            "post":{
+                "summary": "CREATE de um usuário",
+                "description": "Criar um usuário",
+                "tags": [
+                    "Usuario"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "id_usuario": 1,
+                                        "nome": "nome",
+                                        "cargo": "cargo",
+                                        "email": "email",
+                                        "senha": "senha",
+                                        "cadastro": "2021-09-01",
+                                        "status": "Ativo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get":{
+                "summary": "READ de todos os usuários",
+                "description": "Ler todos os usuários",
+                "tags": [
+                    "Usuario"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuários lidos com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "update":{
+                "summary": "UPDATE de um usuário",
+                "description": "Atualizar um usuário",
+                "tags": [
+                    "Usuario"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "id_usuario": 1,
+                                        "nome": "nome",
+                                        "cargo": "cargo",
+                                        "email": "email",
+                                        "senha": "senha",
+                                        "cadastro": "2021-09-01",
+                                        "status": "Ativo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user:/id":{
+            "get":{
+                "summary": "READ de um usuário",
+                "description": "Ler um usuário",
+                "tags": [
+                    "Usuario"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário lido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "update":{
+                "summary": "UPDATE de um usuário",
+                "description": "Atualizar um usuário",
+                "tags": [
+                    "Usuario"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "id_usuario": 1,
+                                        "nome": "nome",
+                                        "cargo": "cargo",
+                                        "email": "email",
+                                        "senha": "senha",
+                                        "cadastro": "2021-09-01",
+                                        "status": "Ativo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete":{
+                "summary": "DELETE de um usuário",
+                "description": "Deletar um usuário",
+                "tags": [
+                    "Usuario"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    },
+
+
+"components": {
+    "schemas": {
+        "Station": {
+            "type": "object",
+            "properties": {
+                "identificador": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                },
+                "instalacao": {
+                    "type": "string"
+                },
+                "parametro": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "ERROR MESSAGE",
+                    "description": "Mensagem de erro"
+                }
+            }
+        },
+        "Alerta": {
+            "type": "object",
+            "properties": {
+                "id_alerta": {
+                    "type": "number"
+                },
+                "valor": {
+                    "type": "number"
+                },
+                "sinal": {
+                    "type": "string"
+                }
+            }
+        },
+        "Historico_Alerta": {
+            "type": "object",
+            "properties": {
+                "id_historico": {
+                    "type": "number"
+                },
+                "data": {
+                    "type": "Date"
+                }
+            }
+        },
+        "Parametro": {
+            "type": "object",
+            "properties": {
+                "id_parametro": {
+                    "type": "number"
+                }
+            }
+        },
+        "Tipo_Parametro": {
+            "type": "object",
+            "properties": {
+                "id_tipo_parametro": {
+                    "type": "number"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "unidade": {
+                    "type": "string"
+                },
+                "descricao": {
+                    "type": "string"
+                },
+                "json": {
+                    "type": "string"
+                },
+                "fator": {
+                    "type": "float"
+                },
+                "offset": {
+                    "type": "float"
+                },
+                "cadastro": {
+                    "type": "Date"
+                }
+            }
+        },
+        "Valor": {
+            "type": "object",
+            "properties": {
+                "id_valor": {
+                    "type": "number"
+                },
+                "valor": {
+                    "type": "number"
+                },
+                "unixtime": {
+                    "type": "number"
+                }
+            }
+        },
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "id_usuario": {
+                    "type": "number"
+                },
+                "nome": {
+                    "type": "string"
+                },
+                "cargo": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "senha": {
+                    "type": "string"
+                },
+                "cadastro": {
+                    "type": "Date"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+}
