@@ -12,12 +12,16 @@ Alerta.init(
             allowNull: false,
             // onDelete: "CASCADE",
         },
-        valor: {
-            type: DataTypes.INTEGER,
+        TipoDeAlerta: {
+            type: DataTypes.STRING(2),
             allowNull: false,
         },
-        sinal: {
-            type: DataTypes.STRING(3),
+        valor: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        data: {
+            type: DataTypes.DATE,
             allowNull: false,
         },
     },

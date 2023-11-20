@@ -8,7 +8,7 @@ import { sha512 } from "sha512-crypt-ts";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocs from "./swagger.json";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 dotenv.config();
