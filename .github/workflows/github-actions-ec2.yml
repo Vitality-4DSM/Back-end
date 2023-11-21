@@ -1,18 +1,34 @@
-name: Deploy to EC2 on Pull Request Merge
+name: Automatização de entrega continua
 
 on:
   pull_request:
     types:
       - closed
+  push:
 
 jobs:
-  deploy-main:
-    name: Deploy na Main quando tiver Merge
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+  teste:
+    name: Executar Testes 
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to Server
+    - name: Checkout do código
+      uses: actions/checkout@v2
+
+    - name: Executar testes
+      run: |
+        npm install
+        cd test  # Mude para o diretório 'test'
+        npm test
+
+  deploy-main:
+    name: Deploy na Main quando tiver Merge ou Push
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true || github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy para main
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEYS }}
@@ -21,29 +37,30 @@ jobs:
           TARGET: "~/Backend"
 
       - name: Execute Remote SSH Commands
+        id: ssh-command
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.EC2_SSH_KEYS }}
+          command_timeout: 5m
           script: |
-            ssh -i FATEC-EQ2.pem ubuntu@34.193.65.107 
             cd Backend
             cd main
             rm -rf Back-end
             git clone https://github.com/Vitality-4DSM/Back-end.git
             cd Back-end
             npm install
-            fuser -k 3000/tcp
-            npm run dev
+            fuser -k 3001/tcp
+    #npm run dev
 
   deploy-develop:
-    name: Deploy na Develop quando tiver Merge
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'develop'
+    name: Deploy na Develop quando tiver Merge ou Push
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true || github.event_name == 'push' && github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to Server
+      - name: Deploy para develop
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEYS }}
@@ -52,13 +69,14 @@ jobs:
           TARGET: "~/Backend"
 
       - name: Execute Remote SSH Commands
+        id: ssh-command
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.EC2_SSH_KEYS }}
+          command_timeout: 5m
           script: |
-            ssh -i FATEC-EQ2.pem ubuntu@34.193.65.107 
             cd Backend
             cd develop
             rm -rf Back-end
@@ -66,5 +84,5 @@ jobs:
             cd Back-end
             git checkout develop
             npm install
-            fuser -k 3000/tcp
-            npm run dev
+            fuser -k 3001/tcp
+  #npm run dev
