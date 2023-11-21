@@ -20,6 +20,7 @@
                 "tags": [
                     "Station"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -55,6 +56,16 @@
                     },
                     "400": {
                         "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -148,6 +159,7 @@
                 "tags": [
                     "Station"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -190,6 +202,16 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -201,6 +223,7 @@
                 "tags": [
                     "Station"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -233,6 +256,16 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -244,6 +277,7 @@
                 "tags": [
                     "Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -276,6 +310,16 @@
                     },
                     "400": {
                         "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -323,6 +367,7 @@
                 "tags": [
                     "Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -349,6 +394,26 @@
                                 "schema": {
                                     "type": "object",
                                     "$ref": "#/components/schemas/Alerta"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
                                 }
                             }
                         }
@@ -385,6 +450,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -396,6 +481,7 @@
                 "tags": [
                     "Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -418,6 +504,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -429,6 +535,7 @@
                 "tags": [
                     "Historico_Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -451,6 +558,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -462,6 +589,7 @@
                 "tags": [
                     "Historico_Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -500,6 +628,16 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -509,6 +647,7 @@
                 "tags": [
                     "Historico_Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "responses": {
                     "200": {
                         "description": "Históricos de alerta lidos com sucesso",
@@ -520,7 +659,28 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
+
                 }
             },
             "put": {
@@ -529,6 +689,7 @@
                 "tags": [
                     "Historico_Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -557,6 +718,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -566,6 +747,7 @@
                 "tags": [
                     "Historico_Alerta"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -588,6 +770,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -599,6 +801,7 @@
                 "tags": [
                     "Parametro"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -659,12 +862,13 @@
                     }
                 }
             },
-            "update": {
+            "put": {
                 "summary": "UPDATE de um parâmetro",
                 "description": "Atualizar um parâmetro",
                 "tags": [
                     "Parametro"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -734,6 +938,7 @@
                 "tags": [
                     "Parametro"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -849,6 +1054,16 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -858,6 +1073,7 @@
                 "tags": [
                     "Valor"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -887,6 +1103,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -896,6 +1132,7 @@
                 "tags": [
                     "Valor"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -918,6 +1155,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Valor"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -929,6 +1186,7 @@
                 "tags": [
                     "Usuario"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -962,7 +1220,28 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        },
+                        "401": {
+                            "description": "Erro de autenticação",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "$ref": "#/components/schemas/Error"
+                                    }
+                                }
+                            }
+                        }
                     }
+
                 }
             },
             "get":{
@@ -971,6 +1250,7 @@
                 "tags": [
                     "Usuario"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "responses": {
                     "200": {
                         "description": "Usuários lidos com sucesso",
@@ -982,44 +1262,22 @@
                                 }
                             }
                         }
-                    }
-                }
-            },
-            "update":{
-                "summary": "UPDATE de um usuário",
-                "description": "Atualizar um usuário",
-                "tags": [
-                    "Usuario"
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Usuario"
-                            },
-                            "examples": {
-                                "usuario": {
-                                    "value": {
-                                        "id_usuario": 1,
-                                        "nome": "nome",
-                                        "cargo": "cargo",
-                                        "email": "email",
-                                        "senha": "senha",
-                                        "cadastro": "2021-09-01",
-                                        "status": "Ativo"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Usuário atualizado com sucesso",
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "object",
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
                                     "$ref": "#/components/schemas/Usuario"
                                 }
                             }
@@ -1035,6 +1293,7 @@
                 "tags": [
                     "Usuario"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -1057,15 +1316,36 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
                     }
                 }
             },
-            "update":{
+            "put":{
                 "summary": "UPDATE de um usuário",
                 "description": "Atualizar um usuário",
                 "tags": [
                     "Usuario"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1099,6 +1379,26 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1108,6 +1408,7 @@
                 "tags": [
                     "Usuario"
                 ],
+                "security":[{"bearerAuth":[]}],
                 "parameters": [
                     {
                         "name": "id",
@@ -1122,6 +1423,28 @@
                 "responses": {
                     "200": {
                         "description": "Usuário deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Erro de autenticação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1167,8 +1490,7 @@
             "type": "object",
             "properties": {
                 "message": {
-                    "type": "ERROR MESSAGE",
-                    "description": "Mensagem de erro"
+                    "type": "string"
                 }
             }
         },
@@ -1274,6 +1596,13 @@
                 }
             }
         }
+    }
+},
+"securitySchemes":{
+    "bearerAuth":{
+        "type": "http",
+        "scheme":"bearer",
+        "bearerFormat": "JWT"
     }
 }
 }
