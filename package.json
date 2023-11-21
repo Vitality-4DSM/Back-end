@@ -22,7 +22,8 @@
     "pg": "^8.11.3",
     "sequelize": "^6.32.1",
     "sha512-crypt-ts": "^0.1.27",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^5.0.0",
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",
@@ -31,6 +32,7 @@
     "@types/jsonwebtoken": "^9.0.2",
     "@types/mocha": "^10.0.1",
     "@types/swagger-ui-express": "^4.1.6",
+    "@types/supertest": "^2.0.16",
     "chai": "^4.3.8",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
