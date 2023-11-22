@@ -1,10 +1,8 @@
-// testes de rotas
-
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import request from 'supertest';
 
-describe('POST http://localhost:3001/test/', () => {
+describe('TESTE UNITÁRIO - POST http://localhost:3001/test/', () => {
   it('Teste POST - Deve retornar status 200', async () => {
     const res = await request('http://localhost:3001').post('/test/').send({
       string: 'string',
@@ -16,21 +14,21 @@ describe('POST http://localhost:3001/test/', () => {
   });
 });
 
-describe('GET http://localhost:3001/test/', () => {
+describe('TESTE UNITÁRIO - GET http://localhost:3001/test/', () => {
   it('Teste GetAll - Deve retornar status 200', async () => {
     const res = await request('http://localhost:3001').get('/test/');
     expect(res.status).to.equal(200);
   });
 });
 
-describe('GET http://localhost:3001/test/:id', () => {
+describe('TESTE UNITÁRIO - GET http://localhost:3001/test/:id', () => {
   it('Teste GetById - Deve retornar status 200', async () => {
     const res = await request('http://localhost:3001').get('/test/');
     expect(res.status).to.equal(200);
   });
 });
 
-describe('PUT http://localhost:3001/test/', () => {
+describe('TESTE UNITÁRIO - PUT http://localhost:3001/test/', () => {
   it('Teste PUT - Deve retornar status 200', async () => {
     const res = await request('http://localhost:3001').put('/test/').send({
       id: 6,
@@ -43,7 +41,7 @@ describe('PUT http://localhost:3001/test/', () => {
   });
 });
 
-describe('DELETE http://localhost:3001/test/', () => {
+describe('TESTE UNITÁRIO - DELETE http://localhost:3001/test/', () => {
   it('Teste DELETE - Deve retornar status 200', async () => {
     const res = await request('http://localhost:3001').delete('/test/').send({
       string: 'string',

@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { Parametro } from "../../src/models/parametro";
 
-describe("Inicialização do model de Parametro", () => {
+describe("TESTE UNITÁRIO - Inicialização do model de Parametro", () => {
     it("Deve conter todos os atributos corretamente", () => {
         expect(Parametro).to.have.property("name", "parametro");
         expect(Parametro).to.have.property("tableName", "parametro");
