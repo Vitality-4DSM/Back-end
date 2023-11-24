@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion, Long } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://admin:TZfuObZEL9K2OXaz@vitality-gaia.joxmt67.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   serverApi: {
@@ -15,14 +15,13 @@ async function sincronizar() {
   const Banco_mongo = db.collection('armazenamento');
 
   // lista formada por um get da coleção armazenamento, com o parametro de apenas vir o que tiver o campo convertido = false
-  const lista = await Banco_mongo.find({ convertido: true }).toArray();
+  const lista = await Banco_mongo.find({ convertido: false }).toArray();
 
   var ids_estacao = [];
   var ids_tipo_parametro = [];
   var ids_parametro = [];
   var valores = [];
-  //lista.length
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < lista.length; i++) {
     let json_do_banco_nao_relacional = lista[i];
     let json_estacao = json_do_banco_nao_relacional.json;
 
@@ -47,10 +46,7 @@ async function sincronizar() {
     var ids_parametro = [];
     await processarParametros(dataParametros, json_estacao, ids_estacao, ids_tipo_parametro, ids_parametro, valores);
 
-    await Banco_mongo.updateOne(
-      { _id: json_do_banco_nao_relacional._id },
-      { $set: { convertido: true } }
-    );
+    await Banco_mongo.deleteOne({ _id: json_do_banco_nao_relacional._id });
 
     // consoles log para poder verificar informações trazidas durante o processo, clique na seta para expandir ou recolher
     // console.log("json do banco não relacional:")
