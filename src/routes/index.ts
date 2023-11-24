@@ -7,6 +7,7 @@ import typeParameter from "./tipo_parametro";
 import parameter from "./parametro";
 import alert from "./alerta";
 import historicAlert from "./historico_alerta";
+import test from "./test";
 import dashboard from "./dashboard";
 
 const routes = Router();
@@ -19,6 +20,7 @@ routes.use("/parameter", parameter);
 routes.use("/alert", alert);
 routes.use("/historicalert", historicAlert);
 routes.use("/dashboard", dashboard)
+routes.use("/test", test);
 
 routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));
 export default routes;

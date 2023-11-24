@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 import { Usuario } from "./models/usuario";
 import db from "./config/bd_config";
 import { sha512 } from "sha512-crypt-ts";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocs from "./swagger.json";
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -14,6 +17,7 @@ app.use(express.json());
 // Configuração do CORS para permitir todas as origens (*), você pode personalizar isso conforme necessário.
 app.use(cors());
 
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 db.authenticate().then(() => {
     console.log("connected to database");
 }).catch((err) => {
