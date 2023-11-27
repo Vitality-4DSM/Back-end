@@ -4,7 +4,6 @@ import { authorization } from "../autenticacao";
 
 const routes = Router();
 
-// SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', authorization, user.create);
 routes.get('/:id', authorization, user.getById);
 routes.get('/', authorization, user.getAll);

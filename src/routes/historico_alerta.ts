@@ -5,7 +5,6 @@ import { apiKey } from "../middlewares";
 
 const routes = Router();
 
-// SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', authorization, apiKey, HistoricoAlerta.create);
 routes.get('/get', authorization, apiKey, HistoricoAlerta.getById);
 routes.get('/', authorization, apiKey, HistoricoAlerta.getAll);
