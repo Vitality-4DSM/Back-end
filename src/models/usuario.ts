@@ -9,7 +9,7 @@ Usuario.init(
             autoIncrement: true,
             primaryKey: true,
             allowNull: false,
-            onDelete: "CASCADE"
+            // onDelete: "CASCADE"
         },
         nome: {
             type: DataTypes.STRING(30),
@@ -22,6 +22,7 @@ Usuario.init(
         email: {
             type: DataTypes.STRING(30),
             allowNull: false,
+            unique: true,
         },
         senha: {
             type: DataTypes.STRING(100),
@@ -30,6 +31,11 @@ Usuario.init(
         cadastro: {
             type: DataTypes.DATE,
             allowNull: false,
+        },
+        status: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
         },
     },
     {

@@ -1,37 +1,38 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../config/bd_config";
-import { Parametro } from "./parametro";
 
-export class Alerta extends Model { }
-Alerta.init(
+export class Test extends Model { }
+Test.init(
     {
-        id_alerta: {
+        id_test: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false,
-            // onDelete: "CASCADE",
+            // onDelete: "CASCADE"
         },
-        TipoDeAlerta: {
-            type: DataTypes.STRING(2),
+        string: {
+            type: DataTypes.STRING(30),
             allowNull: false,
         },
-        valor: {
-            type: DataTypes.FLOAT,
+        number: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        data: {
+        date: {
             type: DataTypes.DATE,
             allowNull: false,
         },
+        boolean: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
+        }
     },
     {
         timestamps: false,
         sequelize: db,
-        modelName: "alerta",
-        tableName: "alerta",
+        modelName: "test",
+        tableName: "test",
     }
 );
-
-
-Alerta.belongsTo(Parametro, { foreignKey: {name:'fk_parametro', allowNull: false}, onDelete: "CASCADE" })

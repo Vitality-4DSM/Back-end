@@ -17,7 +17,8 @@ export class DashboardController {
             const id_parametro = response.map((parametro: any) => parametro.id_parametro);
             const json = response.map((parametro: any) => parametro.tipo_parametro.json);
             const dados  = await Valor.findAll({
-                where: { fk_parametro: id_parametro } , include: [{all: true}]
+                where: { fk_parametro: id_parametro } , include: [{all: true}] , 
+                order: [['unixtime', 'ASC']],
             });
             return res.json(dados);
         } catch (e) {

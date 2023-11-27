@@ -31,6 +31,10 @@ Estacao.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    parametros: {
+      type: DataTypes.JSON,
+      allowNull: true,
+    }
   },
   {
     timestamps: false,
