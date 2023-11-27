@@ -3,13 +3,7 @@ import alert from '../controllers/alerta';
 import { authorization } from "../autenticacao";
 
 const routes = Router();
-// routes.post('/', alert.create);
-// routes.get('/get', alert.getById);
-// routes.get('/', alert.getAll);
-// routes.put('/', alert.update);
-// routes.delete('/', alert.delete);
 
-// SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', authorization, alert.create);
 routes.get('/get', alert.getById);
 routes.get('/', alert.getAll);

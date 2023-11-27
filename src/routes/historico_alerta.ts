@@ -4,13 +4,7 @@ import { authorization} from "../autenticacao";
 import { apiKey } from "../middlewares";
 
 const routes = Router();
-// routes.post('/', HistoricoAlerta.create);
-// routes.get('/get', HistoricoAlerta.getById);
-// routes.get('/', HistoricoAlerta.getAll);
-// routes.put('/', HistoricoAlerta.update);
-// routes.delete('/', HistoricoAlerta.delete);
 
-// SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', authorization, apiKey, HistoricoAlerta.create);
 routes.get('/get', authorization, apiKey, HistoricoAlerta.getById);
 routes.get('/', authorization, apiKey, HistoricoAlerta.getAll);

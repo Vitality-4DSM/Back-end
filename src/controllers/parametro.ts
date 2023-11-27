@@ -8,7 +8,7 @@ export class ParametroController {
   async create(req: Request, res: Response) {
     try {
       const parameter = await Parametro.create({ ...req.body });
-
+      console.log(parameter)
       return res.json(parameter);
     } catch (e) {
       return res.status(500).json({ error: "Cannot create Parametro" + e });
@@ -18,7 +18,7 @@ export class ParametroController {
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const parameter = await Parametro.findAll();
+      const parameter = await Parametro.findAll( {include: [{all: true}]});
       return res.json(parameter);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Parameters" });
@@ -82,11 +82,11 @@ export class ParametroController {
 
   // leitura de parametro por tipo de parametro
   async getByFkTipoParametro(req: Request, res: Response) {
-    const { id } = req.body;
+    const { id, selecionado } = req.params;
 
     try {
       const parameter = await Parametro.findAll({
-        where: { fk_tipo_parametro: id },
+        where: { fk_tipo_parametro: id , fk_estacao: selecionado},
       });
       return res.json(parameter);
     } catch (e) {

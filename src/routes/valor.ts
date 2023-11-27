@@ -4,13 +4,7 @@ import { authorization } from "../autenticacao";
 import { apiKey } from "../middlewares";
 
 const routes = Router();
-// routes.post('/', valor.create);
-// routes.get('/get', valor.getById);
-// routes.get('/', valor.getAll);
-// routes.put('/', valor.update);
-// routes.delete('/', valor.delete);
 
-// SOMENTE O ADMIN ACESSA CREATE E O DELETE
 routes.post('/', apiKey, authorization, valor.create);
 routes.get('/get', apiKey, valor.getById);
 routes.get('/', apiKey, valor.getAll);
