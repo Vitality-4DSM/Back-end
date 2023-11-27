@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import request from 'supertest';
 
-describe('TESTE INTEGRAÇÃO - Teste da rota test', () => {
+describe('TESTE UNITÁRIO - Teste da rota test', () => {
   it('Deve retornar status 200 para todos os métodos', async () => {
     const res_post = await request('http://localhost:3001').post('/test/').send({
       string: 'string',

@@ -12,17 +12,4 @@ describe('TESTE UNITÁRIO - POST http://localhost:3001/login/', () => {
         expect(res.body).to.have.property('token');
         const token = res.body.token;
     });
-    // it("Teste POST - Deve retornar status 200 e criar um novo usuário no banco de dados", async () => {
-    //     const res = await request('http://localhost:3001').post('/user/').send({
-    //         nome: "Maria Santos",
-    //         cargo: "Analista",
-    //         email: "maria.santos@example.com",
-    //         senha: "senha456",
-    //         cadastro: "2023-08-15T14:30:00Z",
-    //     },
-    //     );
-    //     console.log(res.body);
-    //     expect(res.status).to.equal(200);
-    // }
-    // );
 });
