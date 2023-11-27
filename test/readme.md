@@ -25,6 +25,8 @@ Ao escrever novos testes, é importante seguir diretrizes para garantir a eficá
 4. Cobertura abrangente: Buscar cobrir o máximo possível do código, identificando áreas críticas e garantindo a confiabilidade do sistema.
 5. Testes de regressão: Garantir que os testes sejam executados sempre que uma nova funcionalidade for adicionada ou alterada, evitando que erros sejam introduzidos no sistema.
 
+Todos os testes estão localizados na pasta raiz ./test, separados em pastas de acordo com a entidade que está sendo testada, como ./test/models, ./test/routes, etc. Dentro de cada pasta, os testes estão separados em arquivos de acordo com o componente que está sendo testado, como ./test/models/parametro.ts, ./test/routes/estacao.ts, etc.
+
 # Exemplo de Teste
 
 Exemplo de um teste unitário realizado para verificar a inicialização correta do modelo Parametro, se possui todos os atributos necessários definidos corretamente.
