@@ -37,7 +37,8 @@ db.sync().then(async () => {
             "cargo": "admin",
             "email": "admin@gmail",
             "senha": sha512.crypt("123","password"),
-            "cadastro": "2023-01-21T10:00:00Z" 
+            "cadastro": "2023-01-21T10:00:00Z",
+            "status": true
         });
         console.log("Usuário admin criado com sucesso.");
     } 
@@ -48,7 +49,8 @@ db.sync().then(async () => {
             "cargo": "user",
             "email": "user@gmail",
             "senha": sha512.crypt("123","password"),
-            "cadastro": "2023-01-21T10:00:00Z" 
+            "cadastro": "2023-01-21T10:00:00Z" ,
+            "status": true
         });
         console.log("Usuário user criado com sucesso.");
     }

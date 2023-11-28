@@ -5,7 +5,7 @@ import { generateToken } from '../middlewares';
 async function login(req: Request, res: Response): Promise<Response> {
     const { email, senha } = req.body;
     const user = await Usuario.findOne({
-        where: { email: email, senha: senha, status: 1 }
+        where: { email: email, senha: senha, status: true }
     });
     if (user) {
         const token = await generateToken(user.toJSON());
