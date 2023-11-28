@@ -5,7 +5,7 @@ import { apiKey } from "../middlewares";
 
 const routes = Router();
 
-routes.post('/', apiKey, authorization, valor.create);
+routes.post('/', apiKey, valor.create);
 routes.get('/get', apiKey, valor.getById);
 routes.get('/', apiKey, valor.getAll);
 routes.put('/', apiKey, authorization, valor.update);

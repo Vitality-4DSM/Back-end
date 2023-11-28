@@ -20,11 +20,11 @@ Estacao.init(
       allowNull: false,
     },
     latitude: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     longitude: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     instalacao: {
