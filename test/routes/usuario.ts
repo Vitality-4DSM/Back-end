@@ -4,7 +4,7 @@ import request from 'supertest';
 
 describe('TESTE UNITÁRIO - Teste da rota usuario', () => {
     it('Deve retorntar o status 401 para o método de POST', async () => {
-        const res_post = await request('http://localhost:3001').post('/user/').send({
+        const res_post = await request('http://40.76.110.239:3001').post('/user/').send({
             "nome": "Maria Santos",
             "cargo": "Analista",
             "email": "maria.santos@example.com",
@@ -17,7 +17,7 @@ describe('TESTE UNITÁRIO - Teste da rota usuario', () => {
 
 describe('TESTE UNITÁRIO - Teste da rota usuario', () => {
     it('Deve retorntar o status 200 para o método de GET', async () => {
-        const res_get = await request('http://localhost:3001').get('/user/');
+        const res_get = await request('http://40.76.110.239:3001').get('/user/');
         expect(res_get.status).to.equal(401);
     });
 });
