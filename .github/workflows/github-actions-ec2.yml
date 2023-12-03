@@ -1,4 +1,4 @@
-name: Automatização de entrega continua
+name: Automatização para entrega continua
 
 on:
   pull_request:
@@ -19,7 +19,7 @@ jobs:
     - name: Executar testes
       run: |
         npm install
-        cd test  # Mude para o diretório 'test'
+        cd test
         npm test
 
   deploy-main:
