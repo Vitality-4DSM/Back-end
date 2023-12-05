@@ -36,19 +36,19 @@ db.sync().then(async () => {
             "nome": "João Silva",
             "cargo": "admin",
             "email": "admin@gmail",
-            "senha": sha512.crypt("123","password"),
-            "cadastro": "2023-01-21T10:00:00Z" 
+            "senha": sha512.crypt("123", "password"),
+            "cadastro": "2023-01-21T10:00:00Z"
         });
         console.log("Usuário admin criado com sucesso.");
-    } 
+    }
     if (!user) {
         // Crie o usuário user se ele não existir
         await Usuario.create({
             "nome": "Maria Silva",
             "cargo": "user",
             "email": "user@gmail",
-            "senha": sha512.crypt("123","password"),
-            "cadastro": "2023-01-21T10:00:00Z" 
+            "senha": sha512.crypt("123", "password"),
+            "cadastro": "2023-01-21T10:00:00Z"
         });
         console.log("Usuário user criado com sucesso.");
     }

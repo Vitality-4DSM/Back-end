@@ -30,11 +30,11 @@ export const authorization = async (req: Request, res: Response, next: NextFunct
 
 export const apiKey = async (req: Request, res: Response, next: NextFunction) => {
     const apiKey = req.headers['x-api-key'];
-   if (apiKey === '4554545sdsdsd5454') {
-     return next(); 
-   } else {
-       return res.status(401).send({ error: `Requisição sem api key ${apiKey}`});
-   }
+    if (apiKey === '4554545sdsdsd5454') {
+        return next();
+    } else {
+        return res.status(401).send({ error: `Requisição sem api key ${apiKey}` });
+    }
 }
 
 // requer a autorização de admin para acessar o recurso

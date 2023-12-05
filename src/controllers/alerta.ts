@@ -11,14 +11,14 @@ export class AlertaController {
 
       return res.json(alert);
     } catch (e) {
-      return res.status(500).json({ error: "Cannot create Alerta" + e});
+      return res.status(500).json({ error: "Cannot create Alerta" + e });
     }
   }
 
   // READ
   async getAll(req: Request, res: Response) {
     try {
-      const alert = await Alerta.findAll({include: [{all: true}]});
+      const alert = await Alerta.findAll({ include: [{ all: true }] });
       return res.json(alert);
     } catch (e) {
       return res.status(500).json({ error: "Cannot get all Alerts" });

@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { Valor } from "../../src/models/valor";
 
-describe("Inicialização do model de Valor", () => {
+describe("TESTE UNITÁRIO - Inicialização do model de Valor", () => {
     it("Deve conter todos os atributos corretamente", () => {
         expect(Valor).to.have.property("name", "valor");
         expect(Valor).to.have.property("tableName", "valor");
