@@ -6,7 +6,7 @@ Os testes são escritos usando o frameworks de testes **Mocha** e **Chai**, foca
 
 Para executar os testes, é necessário que o sistema esteja rodando localmente e o banco de dados esteja conectado. Siga os passos abaixo:
 
-1. Certifique-se de que o sistema está rodando **localmente**, na porta **3001**.
+1. Certifique-se de que o sistema está rodando.
 2. Garanta a conexão com o banco de dados.
 3. Abra um terminal (ex: CMD, Terminal, etc.).
 3. Digite o comando npm test na raiz do projeto.
